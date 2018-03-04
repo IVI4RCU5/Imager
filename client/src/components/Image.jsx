@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import LocationMap from './Map.jsx';
+import MapContainer from './MapContainer.jsx';
 
 class Image extends React.Component {
   constructor(props) {
@@ -34,7 +34,7 @@ class Image extends React.Component {
       }
     })
     .then((response) => {
-      console.log('updated info', response.data[0])
+      console.log('updated image info', response.data[0])
       this.setState({image: response.data[0], input: ''})
     })
     .catch((err) => {
@@ -87,7 +87,7 @@ class Image extends React.Component {
             this.comment()
           }}>Add Comment</button>
         </form>
-        <LocationMap location={this.state.image.location}/>
+        <MapContainer location={this.state.image.location}/>
         <div>Tags: {this.state.image.tags.join(', ')}</div>
       </div>
     )
