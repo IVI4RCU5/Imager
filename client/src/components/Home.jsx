@@ -46,9 +46,11 @@ class Home extends React.Component {
       })
     } else if (this.state.sortingMetric === 'date') {
       return this.state.onDisplay.sort((a, b) => {
-        if (a.uploadDate > b.uploadDate) {
+        let date1 = new Date(a.uploadDate)
+        let date2 = new Date(b.uploadDate)
+        if (date1.getTime() > date2.getTime()) {
           return -1
-        } else if (a.uploadDate < b.uploadDate) {
+        } else if (date1.getTime() < date2.getTime()) {
           return 1
         } else {
           return 0
@@ -76,7 +78,7 @@ class Home extends React.Component {
             event.preventDefault()
             this.setState({
               onDisplay: this.state.images.filter((image) => {
-                return image.tags.includes(this.state.input)
+                return image.tags.includes(this.state.input.toLowerCase())
               })
             })
           }}>Filter by tag</button>

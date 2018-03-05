@@ -72,6 +72,7 @@ class Image extends React.Component {
     return (
       <div>
         <div>{this.state.image.title}</div>
+        <Link to="/">Home</Link>
         <img src={this.state.image.url}/>
         <div>{this.state.image.description}</div>
         <div>{this.state.image.likes} likes</div>

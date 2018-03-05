@@ -16,19 +16,28 @@ class Submit extends React.Component {
   }
 
   post() {
-    console.log('post request sent', new Date())
+    let date = new Date()
+    console.log('post request sent', date)
     axios.post('/images', {
       url: this.state.link,
       title: this.state.title,
       location: this.state.location,
       description: this.state.description,
       comments: [],
-      uploadDate: new Date(),
+      uploadDate: date,
       likes: 0,
       tags: this.state.tags
     })
     .then((response) => {
-      console.log('it worked!')
+      this.setState({
+        link: '',
+        title: '',
+        location: '',
+        description: '',
+        input: '',
+        tags: []
+      })
+      alert('Your image has been posted!')
     })
     .catch((err) => {
       console.error(err)
@@ -53,7 +62,7 @@ class Submit extends React.Component {
             <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
             <button type="submit" onClick={(event) => {
               event.preventDefault()
-              this.setState({tags: this.state.tags.concat([this.state.input]), input: ''})
+              this.setState({tags: this.state.tags.concat([this.state.input.toLowerCase()]), input: ''})
             }}>Add Tag</button>
             {this.state.tags.map((tag, index) => {
               return (
