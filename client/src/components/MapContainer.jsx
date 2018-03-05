@@ -35,7 +35,7 @@ class MapContainer extends React.Component {
           isMarkerShown
           googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxaNU0TappofEWv0e7rg-Lfg6bpP7NzCM&v=3.exp&libraries=geometry,drawing,places"
           loadingElement={<div style={{height: '100%'}}/>}
-          containerElement={<div style={{height: '400px'}}/>}
+          containerElement={<div style={{height: '400px', width: '75%', margin: 'auto'}}/>}
           mapElement={<div style={{height: '100%'}}/>}
           coordinates={this.state.coordinates}
         />

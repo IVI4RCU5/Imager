@@ -47,8 +47,14 @@ class Submit extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/">Home</Link>
-        <form>
+        <header className="options-bar">
+          <nav className="nav-button">
+            <Link to="/">
+              <button>Home</button>
+            </Link>
+          </nav>
+        </header>
+        <form className="submit-form">
           <div>Link:</div>
           <input value={this.state.link} onChange={(event) => {this.setState({link: event.target.value})}}></input>
           <div>Title:</div>
@@ -57,20 +63,20 @@ class Submit extends React.Component {
           <input value={this.state.location} onChange={(event) => {this.setState({location: event.target.value})}}></input>
           <div>Description:</div>
           <input value={this.state.description} onChange={(event) => {this.setState({description: event.target.value})}}></input>
+          <div>Tags</div>
+          <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
+          <button type="submit" onClick={(event) => {
+            event.preventDefault()
+            this.setState({tags: this.state.tags.concat([this.state.input.toLowerCase()]), input: ''})
+          }}>Add Tag</button>
           <div>
-            <div>Tags</div>
-            <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
-            <button type="submit" onClick={(event) => {
-              event.preventDefault()
-              this.setState({tags: this.state.tags.concat([this.state.input.toLowerCase()]), input: ''})
-            }}>Add Tag</button>
             {this.state.tags.map((tag, index) => {
               return (
-                <div key={index}>{tag}</div>
+                <div key={index} className="tag">{tag}</div>
               )
             })}
           </div>
-          <button type="submit" onClick={(event) => {
+          <button type="submit" className="submit-button" onClick={(event) => {
             event.preventDefault()
             this.post()
           }}>Post</button>

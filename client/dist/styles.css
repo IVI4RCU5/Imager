@@ -1,3 +1,153 @@
 body {
   font-family: Sans-Serif;
 }
+
+.page-header {
+  text-align: center;
+  background-color: lightgrey;
+  padding: 5px;
+}
+
+.page-header h1 {
+  font-size: 3em;
+}
+
+.page-header h2 {
+  font-size: 1.5em;
+}
+
+.options-bar {
+  background-color: grey;
+  overflow: hidden;
+}
+
+.order-dropdown, .filter-form {
+  display: inline-block;
+  margin: 20px 5px;
+}
+
+.order-dropdown div, .order-dropdown select {
+  display: inline-block;
+  margin: 0px 2px;
+}
+
+.order-dropdown div {
+  font-weight: bold;
+}
+
+.nav-button {
+  float: right;
+  margin: 20px 10px;
+}
+
+.image-board {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1fr);
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+}
+
+.image-board a {
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
+.thumbnail img {
+  max-width: 100%;
+  max-height: 300px;
+  display: block;
+  margin: auto;
+}
+
+.thumbnail figcaption {
+  text-align: center;
+  margin: 5px;
+}
+
+.submit-form {
+  margin: 10px 25%;
+}
+
+.tag {
+  display: inline-block;
+  background-color: lightgrey;
+  padding: 5px;
+  margin: 5px 2px;
+  border-radius: 2px;
+}
+
+.submit-form input {
+  min-width: 75%;
+  margin: 5px 0px;
+}
+
+.submit-button {
+  margin: 5px 0px;
+}
+
+.image-details figure {
+  text-align: center;
+}
+
+.image-details header {
+  font-size: 2em;
+  text-align: center;
+  text-decoration: underline;
+  margin: 10px;
+}
+
+.image-details img {
+  max-width: 100%;
+  max-height: 500px;
+}
+
+.tags {
+  display: inline-block;
+}
+
+.likes {
+  float: right;
+}
+
+.likes div, .likes button {
+  display: inline-block;
+  margin: 2px;
+}
+
+.comments-section {
+  max-width: 100%;
+  margin: 5px 0px;
+  padding: 10px;
+  border: 2px solid grey;
+}
+
+.comments-section header {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.comments-section input {
+  display: inline-block;
+  min-width: 90%;
+  margin: 5px;
+}
+
+.comment {
+  max-width: 100%;
+  margin: 10px;
+  padding: 10px;
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.map header {
+  font-size: 1.5em;
+  text-decoration: underline;
+  text-align: center;
+  margin: 20px;
+}
+
+.map {
+  margin: 20px;
+}

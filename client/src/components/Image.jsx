@@ -71,25 +71,46 @@ class Image extends React.Component {
     console.log('rendered image', this.state.image)
     return (
       <div>
-        <div>{this.state.image.title}</div>
-        <Link to="/">Home</Link>
-        <img src={this.state.image.url}/>
-        <div>{this.state.image.description}</div>
-        <div>{this.state.image.likes} likes</div>
-        <button onClick={() => {this.like()}}>Like this image</button>
-        <div>Comments:</div>
-        <div>
-          {this.state.image.comments.map((comment, index) => <div key={index}>{comment}</div>)}
-        </div>
-        <form>
-          <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
-          <button type="submit" onClick={(event) => {
-            event.preventDefault()
-            this.comment()
-          }}>Add Comment</button>
-        </form>
-        <MapContainer location={this.state.image.location}/>
-        <div>Tags: {this.state.image.tags.join(', ')}</div>
+        <header className="options-bar">
+          <nav className="nav-button">
+            <Link to="/">
+              <button>Home</button>
+            </Link>
+          </nav>
+        </header>
+        <section className="image-details">
+          <header>{this.state.image.title}</header>
+          <figure>
+            <img src={this.state.image.url}/>
+            <figcaption>{this.state.image.description}</figcaption>
+          </figure>
+          <div className="tags">Tags: {this.state.image.tags.map((tag, index) => {
+              return (
+                <div key={index} className="tag">{tag}</div>
+              )
+            })}</div>
+          <div className="likes">
+            <div>{this.state.image.likes} likes</div>
+            <button onClick={() => {this.like()}}>Like this image</button>
+          </div>
+        </section>
+        <section className="comments-section">
+          <header>Comments:</header>
+          <div>
+            {this.state.image.comments.map((comment, index) => <div key={index} className="comment">{comment}</div>)}
+          </div>
+          <form>
+            <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
+            <button type="submit" onClick={(event) => {
+              event.preventDefault()
+              this.comment()
+            }}>Add Comment</button>
+          </form>
+        </section>
+        <section className="map">
+          <header>Image Location</header>
+          <MapContainer location={this.state.image.location}/>
+        </section>
       </div>
     )
   }

@@ -63,47 +63,51 @@ class Home extends React.Component {
     return (
       <div>
 
-        <div>
-          <div>Order by</div>
-          <select onChange={(event) => this.setState({sortingMetric: event.target.value})}>
-            <option value="likes">Most Liked</option>
-            <option value="comments">Most Commented</option>
-            <option value="date">Newest</option>
-          </select>
-        </div>
+        <header className="options-bar">
+          <div className="order-dropdown">
+            <div>Order by</div>
+            <select onChange={(event) => this.setState({sortingMetric: event.target.value})}>
+              <option value="likes">Most Liked</option>
+              <option value="comments">Most Commented</option>
+              <option value="date">Newest</option>
+            </select>
+          </div>
 
-        <form>
-          <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
-          <button type="submit" onClick={(event) => {
-            event.preventDefault()
-            this.setState({
-              onDisplay: this.state.images.filter((image) => {
-                return image.tags.includes(this.state.input.toLowerCase())
+          <form className="filter-form">
+            <input value={this.state.input} onChange={(event) => {this.setState({input: event.target.value})}}></input>
+            <button type="submit" onClick={(event) => {
+              event.preventDefault()
+              this.setState({
+                onDisplay: this.state.images.filter((image) => {
+                  return image.tags.includes(this.state.input.toLowerCase())
+                })
               })
-            })
-          }}>Filter by tag</button>
-          <button type="submit" onClick={(event) => {
-            event.preventDefault()
-            this.setState({onDisplay: this.state.images})
-          }}>Clear Filter</button>
-        </form>
+            }}>Filter by tag</button>
+            <button type="submit" onClick={(event) => {
+              event.preventDefault()
+              this.setState({onDisplay: this.state.images})
+            }}>Clear Filter</button>
+          </form>
+          
+          <nav className="nav-button">
+            <Link to="/submit">
+              <button>Post a photo!</button>
+            </Link>
+          </nav>
+        </header>
 
-        <Link to="/submit">
-          <button>Post a photo!</button>
-        </Link>
-
-        <div>
+        <main className="image-board">
           {this.order().map((image) => {
             return (
               <Link key={image._id} to={`/images/${image._id}`}>
-                <div>
-                  <img src={`${image.url}`} className="thumbnail"/>
-                  <div>{image.title}</div>
-                </div>
+                <figure className="thumbnail">
+                  <img src={`${image.url}`}/>
+                  <figcaption>{image.title}</figcaption>
+                </figure>
               </Link>
             )
           })}
-        </div>
+        </main>
 
       </div>
     )
