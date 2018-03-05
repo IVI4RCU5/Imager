@@ -12,19 +12,18 @@ class MapContainer extends React.Component {
 
   componentWillReceiveProps(newProps) {
     console.log('container component received new props', newProps)
-    // axios.get('/coordinates', {
-    //   params: {
-    //     location: newProps.location
-    //   }
-    // })
-    // .then((response) => {
-    //   console.log('got coordinates', response.data)
-    //   this.setState({coordinates: response.data})
-    // })
-    // .catch((err) => {
-    //   console.error(err)
-    // })
-    this.setState({coordinates: { lat: -34.397, lng: 150.644 }})
+    axios.get('/coordinates', {
+      params: {
+        location: newProps.location
+      }
+    })
+    .then((response) => {
+      console.log('got coordinates', response.data)
+      this.setState({coordinates: response.data})
+    })
+    .catch((err) => {
+      console.error(err)
+    })
   }
 
   render() {
